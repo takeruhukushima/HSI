@@ -1,6 +1,6 @@
 # Human Science Interaction (HSI)
 
-![FACE](public/README/FACE.png)
+![FACE](./public/INSTALL/opencode-launch.png)
 
 Human Science Interaction（HSI）は、**科学研究における AI コーディングエージェントの活用**を探求・実践するプロジェクトです。
 
