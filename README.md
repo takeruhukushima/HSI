@@ -1,10 +1,12 @@
 # Human Science Interaction (HSI)
 
-<video src="public/Howlooking.mov" controls width="100%"></video>
+![FACE](public/README/FACE.png)
 
 Human Science Interaction（HSI）は、**科学研究における AI コーディングエージェントの活用**を探求・実践するプロジェクトです。
 
 研究者が AI を研究の強力なパートナーとして活用するための知見、設定、ベストプラクティスを体系化し、共有します。
+
+さらにこのリポジトリでは、ローカルモデルとMCPを用いて、膨大な論文から必要な情報（知識）を抽出する一般的な科学タスクやプロテインコロナの解析（プロテオミクス）などを本実装し、また共有します。
 
 ## このリポジトリの目的
 
@@ -19,6 +21,7 @@ Human Science Interaction（HSI）は、**科学研究における AI コーデ�
 OpenCode は、ターミナル・デスクトップ・IDE で動作する**オープンソースの AI コーディングエージェント**です。
 GitHub では 150K 以上のスターを獲得し、多くの開発者に利用されています。
 
+- 何よりも**100% Opensource**
 - **75+ の LLM プロバイダ**に対応（Claude, GPT, Gemini, ローカルモデルなど）
 - **Plan / Build モード**の切り替えで、計画と実装を分けて作業可能
 - **MCP（Model Context Protocol）** に対応し、外部ツールと連携
@@ -33,6 +36,8 @@ GitHub では 150K 以上のスターを獲得し、多くの開発者に利用�
 | [OpenCode とは？](docs/concept/WHAT_IS_OPENCODE.md) | 科学者向けに OpenCode の概念や仕組みをわかりやすく解説 |
 
 ### 🔧 インストールガイド
+
+「EditorやTerminalをいじりたくない」または「面倒な環境構築をしたくない」という方はdesktopアプリをinstallすることを推奨します。
 
 | ドキュメント | 説明 |
 |---|---|
@@ -78,4 +83,9 @@ GitHub では 150K 以上のスターを獲得し、多くの開発者に利用�
 
 ## ライセンス
 
-このリポジトリのドキュメントは CC0 1.0 Universal（Public Domain）で提供されます。
+このリポジトリのドキュメントは MITで提供されます。
+著作権の明示さえあれば、この資料を営利・不営利問わず活用改変して構いません。
+もちろん授業等で使ってもかまいません。
+ISSUE,PullRequestを歓迎しています。
+悪意のある活用・配布、MITの規約違反などは法的措置を講じる可能性があります。
+詳しくは[LICENSE](./LICENSE)まで。
