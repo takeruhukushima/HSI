@@ -79,11 +79,12 @@ WSL2 上の OpenCode を快適に使うには WezTerm が便利です。
 > nix は Homebrew（Mac 用）のようなものですが、Windows でも使える点が強みです。
 
 ### macOS の場合
+[公式docs](https://nixos.org/download/#nix-install-macos)
 
 WezTerm（またはターミナル）で以下のコマンドを実行：
 
 ```bash
-sh <(curl -L https://nixos.org/nix/install)
+sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install)
 ```
 
 インストール中にいくつか質問されます：
@@ -93,25 +94,16 @@ sh <(curl -L https://nixos.org/nix/install)
 インストールが完了したら、ターミナルをいったん閉じて、再度開いてください。
 
 ### Windows（WSL2）の場合
-
+[公式docs](https://nixos.org/download/#nix-install-windows)
 1. WezTerm を起動し、**Ubuntu** セッションを開く
 2. 以下のコマンドを実行：
 
 ```bash
-sh <(curl -L https://nixos.org/nix/install)
+sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install) --daemon
 ```
 
 3. インストール中に `Continue?` と聞かれたら `y` と入力
-4. インストール完了後、以下のコマンドで nix を有効化：
-
-```bash
-source ~/.nix-profile/etc/profile.d/nix.sh
-```
-
-> 毎回 `source` を実行するのが面倒な場合は、以下のコマンドを一度だけ実行すると次回から自動で有効化されます：
-> ```bash
-> echo 'source ~/.nix-profile/etc/profile.d/nix.sh' >> ~/.bashrc
-> ```
+4. インストール完了後、ターミナルを一度閉じて開き直す
 
 ### インストールの確認
 
@@ -171,7 +163,7 @@ source ~/.bashrc
 
 ### 4.1 API プロバイダの選択
 
-OpenCode を初めて起動すると、使用する AI モデルのプロバイダを選択するよう促されます。
+OpenCode を初めて起動すると、使用する AI モデルのプロバイダを選択することができます。初期設定ではOpencode専用の無料モデルが設定されているので無料で扱うことができます。
 
 **おすすめの選択肢：**
 
@@ -182,9 +174,9 @@ OpenCode を初めて起動すると、使用する AI モデルのプロバイ�
 | **GitHub Copilot** | Copilot の契約があれば追加料金なし | 月額 $10+ |
 | **Anthropic（Claude）** | Claude の契約があれば追加料金なし | 従量課金または月額 $20+ |
 
-API キーをお持ちでない場合や、まずは無料で試したい場合は、[ローカルモデルの利用方法](./LOCAL_MODEL.md)を参照してください。
+API キーをお持ちでない場合や、まずは無料で試したい場合は、opencode専用の無料モデルをお使いになるか[ローカルモデルの利用方法](./LOCAL_MODEL.md)を参照してください。
 
-### 4.2 API キーの設定
+### 4.2 (option)API キーの設定
 
 推奨する方法は、OpenCode TUI（ターミナル UI）内で `/connect` コマンドを使うことです。
 
@@ -254,7 +246,7 @@ opencode
 
 応答が返ってくれば、セットアップ完了です！
 
-![OpenCode 起動画面](../images/opencode-launch.png)
+![OpenCode 起動画面](../public/opencode-launch.png)
 
 ---
 
@@ -317,5 +309,5 @@ brew install anomalyco/tap/opencode
 Node.js がインストールされている環境では：
 
 ```bash
-npm install -g opencode-ai
+npm i -g opencode-ai
 ```
