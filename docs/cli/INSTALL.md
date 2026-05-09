@@ -246,7 +246,7 @@ opencode
 
 応答が返ってくれば、セットアップ完了です！
 
-![OpenCode 起動画面](../../public/opencode-launch.png)
+![OpenCode 起動画面](../../public/INSTALL/opencode-launch.png)
 
 ---
 
