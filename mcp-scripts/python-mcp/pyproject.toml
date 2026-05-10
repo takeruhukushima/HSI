@@ -1,0 +1,21 @@
+[project]
+name = "python-mcp"
+version = "0.1.0"
+description = "MCP server for scientific research (Python + uv)"
+dependencies = [
+    "mcp",
+    "pandas",
+    "numpy",
+    "matplotlib",
+    "seaborn",
+    "scipy",
+    "scikit-learn",
+    "plotly",
+    "paper-qa>=4.9.0",
+]
+requires-python = ">=3.10"
+
+[project.optional-dependencies]
+paperqa = ["paper-qa"]
+proteomics = ["fair-esm", "umap-learn", "hdbscan"]
+all = ["paper-qa", "fair-esm", "umap-learn", "hdbscan"]
