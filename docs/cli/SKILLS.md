@@ -38,9 +38,14 @@ OpenCodeへ次のように依頼します。
 refディレクトリの論文をPaperQAで調べて、PaperQA2とは何か引用付きで答えて。
 ```
 
-生成LLMはOpenCodeで現在選択中のProviderとモデルを使用し、Embeddingは
+生成LLMはOpenCodeで現在選択中の任意のProviderとモデルを使用し、Embeddingは
 Ollamaの`embeddinggemma`を使用します。両者は同じ会話を再入実行するのでは
 なく、OpenCodeが認証済みの独立した子セッションです。
+
+PaperQA設定内の`openai/hsi-opencode`は、LiteLLMからローカルBridgeまでの
+通信形式を表す名前です。実際の生成ProviderをOpenAIへ固定する設定では
+ありません。OpenCodeでOllama、Anthropic、OpenAIなどへモデルを切り替えると、
+次のHSI実行からその`providerID/modelID`が子セッションへ引き継がれます。
 
 PaperQAの通常のToolSelector Agentを使用します。PaperQAのindex、回答履歴、
 その他の状態はプロジェクトルートの`.pqa/`へ保存されます。

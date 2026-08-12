@@ -6,8 +6,9 @@ description: Run ShinkaEvolve experiments using the current OpenCode model and l
 # HSI ShinkaEvolve
 
 Run ShinkaEvolve with generation routed through the project-local HSI OpenCode
-bridge. OpenCode retains provider credentials. Code similarity embeddings use
-Ollama locally.
+bridge. The bridge uses the provider and model selected for the current OpenCode
+session; it is not tied to OpenAI. OpenCode retains provider credentials. Code
+similarity embeddings use Ollama locally.
 
 ## Prerequisites
 

@@ -8,6 +8,7 @@ import asyncio
 import json
 import os
 import sys
+import urllib.request
 from pathlib import Path
 
 
@@ -41,7 +42,17 @@ async def check_bridge(config: dict) -> None:
     content = response.choices[0].message.content
     if not content or "HSI_BRIDGE_OK" not in content:
         raise RuntimeError(f"Unexpected bridge response: {content!r}")
-    print("HSI bridge and LiteLLM Router are ready.")
+    deployment = config["model_list"][0]["litellm_params"]
+    request = urllib.request.Request(
+        deployment["api_base"].removesuffix("/v1") + "/v1/hsi/model",
+        headers=deployment["extra_headers"],
+    )
+    with urllib.request.urlopen(request) as result:
+        selected = json.load(result)
+    print(
+        "HSI bridge and LiteLLM Router are ready. "
+        f"OpenCode model: {selected['providerID']}/{selected['modelID']}"
+    )
 
 
 async def query_papers(question: str, papers: Path, config: dict) -> None:

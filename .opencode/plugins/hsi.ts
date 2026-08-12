@@ -82,6 +82,17 @@ export const HsiPlugin: Plugin = async ({ client, directory }) => {
         })
       }
 
+      if (request.method === "GET" && url.pathname === "/v1/hsi/model") {
+        const authorization = request.headers.get("authorization")
+        const sessionID = request.headers.get("x-hsi-session-id")
+          ?? (authorization?.startsWith("Bearer ") ? authorization.slice(7) : null)
+        const model = sessionID ? models.get(sessionID) : undefined
+        if (!sessionID || !model) {
+          return json({ error: { message: "No model recorded for this OpenCode session" } }, 404)
+        }
+        return json({ sessionID, ...model })
+      }
+
       if (request.method !== "POST" || url.pathname !== "/v1/chat/completions") {
         return json({ error: { message: "Not found", type: "invalid_request_error" } }, 404)
       }

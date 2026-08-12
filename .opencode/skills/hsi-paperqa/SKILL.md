@@ -6,8 +6,14 @@ description: Query local scientific papers with PaperQA using the current OpenCo
 # HSI PaperQA
 
 Use PaperQA for grounded question answering over a local directory of papers. Its
-generation requests are routed through the project-local HSI plugin, so OpenCode
-keeps provider credentials and PaperQA does not need a separate generation API key.
+generation requests are routed through the project-local HSI plugin. The bridge
+uses the provider and model selected for the current OpenCode session, including
+Ollama, OpenAI, Anthropic, and other configured providers. OpenCode keeps provider
+credentials and PaperQA does not need a separate generation API key.
+
+The `openai/hsi-opencode` name inside the Python script selects the OpenAI-compatible
+wire protocol between LiteLLM and the local bridge. It does not select OpenAI as
+the generation provider.
 
 ## Prerequisites
 

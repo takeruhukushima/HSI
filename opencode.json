@@ -9,6 +9,9 @@
         "apiKey": ""
       },
       "models": {
+        "gemma4:12b-it-qat": {
+          "name": "Gemma 4 12B IT QAT"
+        },
         "gemma4:e4b": {
           "name": "Gemma 4 E4B"
         },
