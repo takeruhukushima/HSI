@@ -20,20 +20,5 @@
         }
       }
     }
-  },
-  "experimental": {
-    "mcp_timeout": 900000
-  },
-  "mcp": {
-    "python-mcp": {
-      "type": "local",
-      "command": ["uv", "run", "--directory", "mcp-scripts/python-mcp", "server.py"],
-      "enabled": true
-    },
-    "tsx-mcp": {
-      "type": "local",
-      "command": ["pnpm", "--prefix", "mcp-scripts/tsx-mcp", "exec", "tsx", "index.ts"],
-      "enabled": true
-    }
   }
 }

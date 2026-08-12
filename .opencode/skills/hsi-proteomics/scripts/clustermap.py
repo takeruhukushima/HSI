@@ -1,3 +1,9 @@
+# /// script
+# requires-python = ">=3.10"
+# dependencies = ["pandas", "numpy", "matplotlib", "seaborn", "openpyxl"]
+# ///
+
+import argparse
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
@@ -202,8 +208,20 @@ def run_clustermap_analysis(input_file, stats_file, protein_name_column='Protein
     heatmap_data.to_excel(os.path.join(output_dir, 'heatmap_source_data_accurate.xlsx'))
     return output_dir
 
-if __name__ == "__main__":
-    input_file = 'raw_data/2026-017N9解析用.xlsx'
-    stats_file = 'output_plot/20260420_213409/stats_free_500_vs_noCoat.xlsx'
-    run_clustermap_analysis(input_file, stats_file)
 
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Generate a proteomics functional clustermap")
+    parser.add_argument("--input", required=True)
+    parser.add_argument("--stats", required=True)
+    parser.add_argument("--output-dir")
+    parser.add_argument("--protein-column", default="Protein.Names")
+    args = parser.parse_args()
+    result = run_clustermap_analysis(
+        args.input,
+        args.stats,
+        protein_name_column=args.protein_column,
+        output_base_dir=args.output_dir,
+    )
+    if result is None:
+        raise SystemExit(1)
+    print(result)

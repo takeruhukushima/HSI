@@ -1,12 +1,14 @@
+# /// script
+# requires-python = ">=3.10"
+# dependencies = ["torch", "fair-esm", "numpy", "pandas", "umap-learn", "hdbscan", "matplotlib", "seaborn", "plotly", "scikit-learn", "openpyxl"]
+# ///
+
+import argparse
 import urllib.request
 import json
 import time
-import torch
-import esm
 import numpy as np
 import pandas as pd
-import umap
-import hdbscan
 import matplotlib.pyplot as plt
 import seaborn as sns
 import plotly.express as px
@@ -37,6 +39,11 @@ def run_po_analysis(stats_file, anchors=["CLUS_MOUSE"], output_base_dir=None):
         anchors: 基準となるアンカータンパク質のリスト。
         output_base_dir: 結果の保存先ベースディレクトリ（絶対パス推奨）。
     """
+    import esm
+    import hdbscan
+    import torch
+    import umap
+
     if not os.path.exists(stats_file):
         print(f"Error: {stats_file} not found.")
         return None
@@ -164,6 +171,18 @@ def run_po_analysis(stats_file, anchors=["CLUS_MOUSE"], output_base_dir=None):
     print(f"\n=== ✨ PO解析システム 処理完了 ✨ ===")
     return output_dir
 
+
 if __name__ == "__main__":
-    stats_file = 'output_plot/20260420_213409/stats_PMPC-MNPs-500_vs_noCoat.xlsx'
-    run_po_analysis(stats_file)
+    parser = argparse.ArgumentParser(description="Run ESM-2 protein ontology analysis")
+    parser.add_argument("--stats", required=True)
+    parser.add_argument("--anchors", default='["CLUS_MOUSE"]', help="JSON array of anchor proteins")
+    parser.add_argument("--output-dir")
+    args = parser.parse_args()
+    result = run_po_analysis(
+        args.stats,
+        anchors=json.loads(args.anchors),
+        output_base_dir=args.output_dir,
+    )
+    if result is None:
+        raise SystemExit(1)
+    print(result)

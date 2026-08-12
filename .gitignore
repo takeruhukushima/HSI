@@ -4,5 +4,7 @@ node_modules/
 .venv/
 __pycache__/
 
+.pqa/
 pqa_indexes/
-
+output_plot/
+shinka_results/
