@@ -9,6 +9,9 @@
         "apiKey": ""
       },
       "models": {
+        "gemma4:12b-it-qat": {
+          "name": "Gemma 4 12B IT QAT"
+        },
         "gemma4:e4b": {
           "name": "Gemma 4 E4B"
         },
@@ -19,21 +22,6 @@
           "name": "Gemma 4 31B"
         }
       }
-    }
-  },
-  "experimental": {
-    "mcp_timeout": 900000
-  },
-  "mcp": {
-    "python-mcp": {
-      "type": "local",
-      "command": ["uv", "run", "--directory", "mcp-scripts/python-mcp", "server.py"],
-      "enabled": true
-    },
-    "tsx-mcp": {
-      "type": "local",
-      "command": ["pnpm", "--prefix", "mcp-scripts/tsx-mcp", "exec", "tsx", "index.ts"],
-      "enabled": true
     }
   }
 }

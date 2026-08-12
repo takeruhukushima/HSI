@@ -1,3 +1,10 @@
+# /// script
+# requires-python = ">=3.10"
+# dependencies = ["pandas", "numpy", "matplotlib", "seaborn", "scipy", "openpyxl"]
+# ///
+
+import argparse
+import json
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -194,17 +201,26 @@ def run_volcano_analysis(file_path, groups, comparisons, p_cutoff=0.05, min_log2
     print(f"\nDone! Results: {output_dir}")
     return output_dir
 
-if __name__ == "__main__":
-    FILE_PATH = "raw_data/2026-017N9解析用.xlsx"
-    GROUPS = {
-        "noCoat": ["1_1", "1_2", "1_3"],
-        "PMPC-MNPs-500": ["2_1", "2_2", "2_3"],
-        "PMPC-MNPs-100": ["3_1", "3_2", "3_3"]
-    }
-    COMPARISONS = [
-        ("PMPC-MNPs-500", "noCoat"),
-        ("PMPC-MNPs-100", "noCoat"),
-        ("PMPC-MNPs-100", "PMPC-MNPs-500")
-    ]
-    run_volcano_analysis(FILE_PATH, GROUPS, COMPARISONS)
 
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Generate proteomics volcano plots")
+    parser.add_argument("--input", required=True)
+    parser.add_argument("--groups", required=True, help="JSON object mapping group names to columns")
+    parser.add_argument("--comparisons", required=True, help="JSON array of [target, control] pairs")
+    parser.add_argument("--output-dir")
+    parser.add_argument("--p-cutoff", type=float, default=0.05)
+    parser.add_argument("--min-log2", type=float, default=-1.0)
+    parser.add_argument("--max-log2", type=float, default=1.0)
+    args = parser.parse_args()
+    result = run_volcano_analysis(
+        args.input,
+        json.loads(args.groups),
+        json.loads(args.comparisons),
+        p_cutoff=args.p_cutoff,
+        min_log2=args.min_log2,
+        max_log2=args.max_log2,
+        output_base_dir=args.output_dir,
+    )
+    if result is None:
+        raise SystemExit(1)
+    print(result)
