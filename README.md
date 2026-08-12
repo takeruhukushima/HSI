@@ -6,7 +6,7 @@ Human Science Interaction（HSI）は、**科学研究における AI コーデ�
 
 研究者が AI を研究の強力なパートナーとして活用するための知見、設定、ベストプラクティスを体系化し、共有します。
 
-さらにこのリポジトリでは、ローカルモデルとMCPを用いて、膨大な論文から必要な情報（知識）を抽出する一般的な科学タスクやプロテインコロナの解析（プロテオミクス）などを本実装し、また共有します。
+さらにこのリポジトリでは、Agent SkillsとローカルPluginを用いて、膨大な論文から必要な情報（知識）を抽出する一般的な科学タスクやプロテインコロナの解析（プロテオミクス）などを実装し、共有します。
 
 ## このリポジトリの目的
 
@@ -71,7 +71,7 @@ GitHub では 150K 以上のスターを獲得し、多くの開発者に利用�
 | ドキュメント | 説明 |
 |---|---|
 | [ローカルモデルの利用方法](docs/cli/LOCAL_MODEL.md) | Ollama / LM Studio を使ったローカル LLM の設定と OpenCode との連携 |
-| [MCP の利用方法](docs/cli/MCP.md) | Model Context Protocol を使った外部ツール連携の設定方法 |
+| [HSI Skills の利用方法](docs/cli/SKILLS.md) | PaperQA・ShinkaEvolve・解析SkillsとPluginの利用方法 |
 
 ## 必要な環境
 

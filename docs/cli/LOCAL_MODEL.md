@@ -570,6 +570,6 @@ opencode config validate
 
 ## 次のステップ
 
-- [MCP の利用方法](./MCP.md) — 外部ツール連携で OpenCode をさらに拡張
+- [HSI Skills の利用方法](./SKILLS.md) — PaperQA・ShinkaEvolve・解析機能を追加
 - [効果的なプロンプトの書き方](../tips/EFFECTIVE_PROMPTING.md) — より良い結果を得るコツ
 - [最初の一歩チュートリアル](../tutorial/FIRST_STEPS.md) — OpenCode の基本的な使い方
